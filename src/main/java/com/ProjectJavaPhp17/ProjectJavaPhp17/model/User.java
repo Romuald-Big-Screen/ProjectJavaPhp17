@@ -3,6 +3,7 @@ package com.ProjectJavaPhp17.ProjectJavaPhp17.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -11,17 +12,13 @@ public class User {
 
     @Id
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
-    @SequenceGenerator(name = "USER_SEQ", sequenceName = "USER_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_SEQ")
+    @SequenceGenerator(name = "ID_SEQ", sequenceName = "ID_SEQ")
     private Integer id;
     private String firstName;
     private String lastName;
-    @Column(unique = true)
-    private String email;
     private String password;
-    @ManyToMany
-    private List<Connection> connections;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Account account;
+    private boolean actived;
+    private Collection<Role> roles;
 
 }
