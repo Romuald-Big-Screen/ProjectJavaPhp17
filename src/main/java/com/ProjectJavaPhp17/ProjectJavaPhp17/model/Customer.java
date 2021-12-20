@@ -7,6 +7,7 @@ import java.util.Collection;
 
 @Data
 @Entity
+
 public class Customer {
 
     @Id
@@ -19,6 +20,7 @@ public class Customer {
     @Column(unique = true)
     private String email;
     private String phone;
+    @OneToMany(mappedBy = "customer")
     private Collection<Ordered> ordereds;
 
 }

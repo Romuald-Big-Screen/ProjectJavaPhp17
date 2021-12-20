@@ -16,6 +16,10 @@ public class Ordered {
     @SequenceGenerator(name = "ORDERED_SEQ", sequenceName = "ORDERED_SEQ")
     private Integer orderedId;
     private Date orderedDate;
+    @OneToMany(mappedBy = "ordered")
     private Collection<OrderedLine> items;
+    @ManyToMany
+    @JoinColumn(name="customerId")
+    private Customer customer;
 
 }
